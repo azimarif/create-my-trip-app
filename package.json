@@ -2,6 +2,16 @@
   "name": "create-my-trip",
   "version": "0.1.0",
   "private": true,
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "eslint:fix": "eslint -c .eslintrc.cjs --fix './**/*.{ts,tsx,js,jsx}'",
+    "eslint:check": "eslint -c .eslintrc.cjs './**/*.{ts,tsx,js,jsx}'",
+    "prettier:fix": "prettier --config ./.prettierrc.json --write './**/*.{ts,tsx,js,jsx}'",
+    "prettier:check": "prettier --config ./.prettierrc.json --check './**/*.{ts,tsx,js,jsx}'"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
@@ -16,11 +26,12 @@
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+  "devDependencies": {
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^14.0.1",
+    "prettier": "3.0.3"
   },
   "eslintConfig": {
     "extends": [

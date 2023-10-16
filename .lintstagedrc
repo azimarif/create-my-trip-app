@@ -1,0 +1,8 @@
+{
+  "*.ts": ["prettier --check", "eslint"],
+  "*.tsx": ["prettier --check", "eslint"],
+  "*.js": ["prettier --check", "eslint"],
+  "*.jsx": ["prettier --check", "eslint"],
+  "*.html": ["prettier --check"],
+  "*.scss": "prettier --check"
+}
