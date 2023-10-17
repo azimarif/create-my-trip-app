@@ -3,7 +3,7 @@
 exports[`Home component matches snapshot with modal closed 1`] = `
 <div>
   <div
-    class="css-1r3ldka"
+    class="css-11wj5jt"
   >
     <div
       class="container"
@@ -264,7 +264,7 @@ exports[`Home component matches snapshot with modal open 1`] = `
   aria-hidden="true"
 >
   <div
-    class="css-1r3ldka"
+    class="css-11wj5jt"
   >
     <div
       class="container"

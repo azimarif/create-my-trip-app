@@ -48,6 +48,11 @@ const Home: React.FC = () => {
     };
 
     const handleClick = () => {
+        const invalidInputs = [fullName, mobileNumber, email].some(x => x.length === 0);
+        if (invalidInputs) {
+            alert('Please enter mandatory fields!');
+            return;
+        }
         const tripInfo = {
             places: selectedPlaces,
             interests: selectedInterests,
@@ -99,7 +104,7 @@ const Home: React.FC = () => {
                     onChangeHandler={(e: any) => setBudget(e.target.value)}
                 />
             </div>
-            <div style={{margin: '10px'}}>
+            <div style={{ margin: '10px' }}>
                 <Button variant="contained" onClick={openPopup}>
                     Create My Trip Now
                 </Button>
@@ -112,44 +117,67 @@ const Home: React.FC = () => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
-                    <Typography variant="h6" component="h2">
-                        Almost There!
-                    </Typography>
-                    <Typography sx={{ mt: 2 }}>We need a bit more info to create your itinerary:</Typography>
-                    <MarginedContainer>
-                        <TextField
-                            fullWidth
-                            placeholder="Full Name"
-                            value={fullName}
-                            onChange={(e) => setFullName(e.target.value)}
-                        />
-                    </MarginedContainer>
-                    <MarginedContainer>
-                        <TextField fullWidth placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                    </MarginedContainer>
-                    <MarginedContainer>
-                        <TextField fullWidth placeholder="Phone Number" value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)} />
-                    </MarginedContainer>
-                    <Container style={{ marginTop: '10px', display: 'flex', justifyContent: 'space-between' }}>
-                        <TextField placeholder="Trip Duration (Days)" value={tripDuration} onChange={(e) => setTripDuration(e.target.value)} />
-                        <Dropdown
-                            items={whenOptions}
-                            defaultValue="When"
-                            onChangeHandler={(e: any) => setTripDate(e.target.value)}
-                        />
-                    </Container>
-                    <MarginedContainer>
-                        <Dropdown
-                            items={stagesOptions}
-                            defaultValue="What stage of planning are you in?"
-                            onChangeHandler={(e: any) => setTripStage(e.target.value)}
-                        />
-                    </MarginedContainer>
-                    <MarginedContainer>
-                        <Button variant="contained" onClick={handleClick}>
-                            Submit
-                        </Button>
-                    </MarginedContainer>
+                    <CenteredContainer className='row'>
+                        <Typography variant="h6" component="h2">
+                            Almost There!
+                        </Typography>
+                    </CenteredContainer>
+                    <CenteredContainer>
+                        <Typography sx={{ mt: 2 }}>We need a bit more info to create your itinerary:</Typography>
+                    </CenteredContainer>
+                    <CenteredContainer>
+                        <MarginedContainer>
+                            <TextField
+                                required
+                                id="outlined-required"
+                                label="Full Name"
+                                fullWidth
+                                value={fullName}
+                                onChange={(e) => setFullName(e.target.value)}
+                            />
+                        </MarginedContainer>
+                    </CenteredContainer>
+                    <CenteredContainer>
+                        <MarginedContainer>
+                            <TextField fullWidth required
+                                id="outlined-required"
+                                label="Email"
+                                value={email} onChange={(e) => setEmail(e.target.value)} />
+                        </MarginedContainer>
+                    </CenteredContainer>
+                    <CenteredContainer>
+                        <MarginedContainer>
+                            <TextField fullWidth
+                                id="outlined-required"
+                                required label="Mobile Number" value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)} />
+                        </MarginedContainer>
+                    </CenteredContainer>
+                    <CenteredContainer>
+                        <Container style={{ marginTop: '10px', display: 'flex', justifyContent: 'space-between' }}>
+                            <TextField placeholder="Trip Duration (Days)" value={tripDuration} onChange={(e) => setTripDuration(e.target.value)} />
+                            <Dropdown
+                                items={whenOptions}
+                                defaultValue="When"
+                                onChangeHandler={(e: any) => setTripDate(e.target.value)}
+                            />
+                        </Container>
+                    </CenteredContainer>
+                    <CenteredContainer>
+                        <MarginedContainer>
+                            <Dropdown
+                                items={stagesOptions}
+                                defaultValue="What stage of planning are you in?"
+                                onChangeHandler={(e: any) => setTripStage(e.target.value)}
+                            />
+                        </MarginedContainer>
+                    </CenteredContainer>
+                    <CenteredContainer>
+                        <MarginedContainer>
+                            <Button variant="contained" onClick={handleClick}>
+                                Submit
+                            </Button>
+                        </MarginedContainer>
+                    </CenteredContainer>
                 </Box>
             </Modal>
         </Body>
@@ -158,6 +186,11 @@ const Home: React.FC = () => {
 
 const MarginedContainer = styled(Container)`
   margin-top: 10px;
+`;
+
+const CenteredContainer = styled(Container)`
+    display: flex;
+    justify-content: center;
 `;
 
 export default Home;

@@ -1,5 +1,6 @@
 import { styled } from "@mui/material";
 import { ReactNode } from "react";
+import backgroundImage from "../assets/background.png";
 
 interface Props {
   children: ReactNode;
@@ -19,6 +20,7 @@ const BodyContainer = styled("div")({
   maxWidth: "100vw",
   height: "100%",
   flex: 1,
+  backgroundImage: `url(${backgroundImage})`,
 });
 
 export default Body;
