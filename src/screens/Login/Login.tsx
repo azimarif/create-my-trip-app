@@ -12,6 +12,8 @@ import {
 import Body from '../../layout/Body';
 import { Trip } from '../../Trip';
 import { adminConfig } from '../../utils/constants';
+import { fetchAllTrips } from '../../repository/trip';
+import { Strings } from '../../locales/English';
 
 const CardContainer = styled(Container)({
   maxWidth: '100em',
@@ -48,8 +50,8 @@ function Login() {
   const [showTrips, setShowTrips] = useState(false);
 
   const loadTrips = () => {
-    const json = localStorage.getItem('trips') || '[]';
-    setTrips(JSON.parse(json));
+    const trips = fetchAllTrips();
+    setTrips(trips);
   };
 
   const loginHandler = () => {
@@ -70,13 +72,73 @@ function Login() {
     }
   }, [showTrips]);
 
+  const renderTrip = () => {
+    return (
+      <>
+        <Typography variant="h5" mb={2}>
+          Booked Trips
+        </Typography>
+        {trips.map((trip, index) => (
+          <CardContainer key={index}>
+            <Card>
+              <StyledCardContent>
+                <CardTitleContainer>
+                  <Typography variant="h6">
+                    {Strings.TripDetailPage.Name}
+                    {trip.fullName}
+                  </Typography>
+                  <Typography>
+                    {Strings.TripDetailPage.Email}
+                    {trip.email}
+                  </Typography>
+                  <Typography>
+                    {Strings.TripDetailPage.Mobile}{' '}
+                    {trip.mobileNumber.toString()}
+                  </Typography>
+                </CardTitleContainer>
+                <JourneyContainer>
+                  <Typography variant="h5">
+                    {Strings.TripDetailPage.Destinations}{' '}
+                    {trip.places.join(', ')}
+                  </Typography>
+                  <JourneyDivider> {trip.tripDate}</JourneyDivider>
+                  <Typography variant="h5">
+                    {Strings.TripDetailPage.Interests} {trip.interests}
+                  </Typography>
+                </JourneyContainer>
+                <JourneyContainer>
+                  <Typography>
+                    {Strings.TripDetailPage.Duration}{' '}
+                    {trip.tripDuration.toString()} days
+                  </Typography>
+                  <Typography>
+                    {Strings.TripDetailPage.Stage} {trip.tripStage}
+                  </Typography>
+                </JourneyContainer>
+                <JourneyContainer>
+                  <Typography>
+                    {Strings.TripDetailPage.TravlerCount}{' '}
+                    {trip.travellersCount.toString()}
+                  </Typography>
+                  <Typography>
+                    {Strings.TripDetailPage.Budget} {trip.budget}
+                  </Typography>
+                </JourneyContainer>
+              </StyledCardContent>
+            </Card>
+          </CardContainer>
+        ))}
+      </>
+    );
+  };
+
   return (
     <Body>
       {!showTrips ? (
         <>
           <div style={{ margin: '10px' }}>
             <TextField
-              placeholder="Username"
+              placeholder={Strings.Login.Username}
               fullWidth
               value={username}
               onChange={(e) => setUsername(e.target.value)}
@@ -86,7 +148,7 @@ function Login() {
             <TextField
               type="password"
               fullWidth
-              placeholder="Password"
+              placeholder={Strings.Login.Password}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -98,47 +160,7 @@ function Login() {
           </div>
         </>
       ) : (
-        <>
-          <Typography variant="h5" mb={2}>
-            Booked Trips
-          </Typography>
-          {trips.map((trip, index) => (
-            <CardContainer key={index}>
-              <Card>
-                <StyledCardContent>
-                  <CardTitleContainer>
-                    <Typography variant="h6">Name: {trip.fullName}</Typography>
-                    <Typography>Email: {trip.email}</Typography>
-                    <Typography>
-                      Mobile: {trip.mobileNumber.toString()}
-                    </Typography>
-                  </CardTitleContainer>
-                  <JourneyContainer>
-                    <Typography variant="h5">
-                      Destinations: {trip.places.join(', ')}
-                    </Typography>
-                    <JourneyDivider> {trip.tripDate}</JourneyDivider>
-                    <Typography variant="h5">
-                      Interests: {trip.interests}
-                    </Typography>
-                  </JourneyContainer>
-                  <JourneyContainer>
-                    <Typography>
-                      Duration: {trip.tripDuration.toString()} days
-                    </Typography>
-                    <Typography>Stage: {trip.tripStage}</Typography>
-                  </JourneyContainer>
-                  <JourneyContainer>
-                    <Typography>
-                      No. of travellers: {trip.travellersCount.toString()}
-                    </Typography>
-                    <Typography>Budget: {trip.budget}</Typography>
-                  </JourneyContainer>
-                </StyledCardContent>
-              </Card>
-            </CardContainer>
-          ))}
-        </>
+        renderTrip()
       )}
     </Body>
   );

@@ -22,13 +22,15 @@ import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { Strings } from '../../locales/English';
 import { EMAIL_REGEX, MOBILE_REGEX } from '../../utils/util';
+import { saveTrip } from '../../repository/trip';
+import { Trip } from '../../Trip';
 
 const style = {
   position: 'absolute',
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: 600,
+  width: '60vh',
   bgcolor: 'background.paper',
   border: '2px solid #000',
   boxShadow: 24,
@@ -39,8 +41,8 @@ const Home: React.FC = () => {
   const navigate = useNavigate();
   const [selectedPlaces, setSelectedPlaces] = useState<string[]>([]);
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
-  const [travellersCount, setTravellersCount] = useState(0);
-  const [budget, setBudget] = useState(0);
+  const [travellersCount, setTravellersCount] = useState('');
+  const [budget, setBudget] = useState('');
   const [showPopup, setShowPopup] = useState(false);
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
@@ -70,13 +72,14 @@ const Home: React.FC = () => {
     }
     return true;
   };
+
   const handleClick = () => {
     const valid = validate();
     if (!valid) {
       alert('Please enter mandatory fields!');
       return;
     }
-    const tripInfo = {
+    const tripInfo: Trip = {
       places: selectedPlaces,
       interests: selectedInterests,
       travellersCount,
@@ -88,11 +91,7 @@ const Home: React.FC = () => {
       tripDate,
       tripStage,
     };
-
-    const json = localStorage.getItem('trips') || '[]';
-    const trips = JSON.parse(json);
-    trips.push(tripInfo);
-    localStorage.setItem('trips', JSON.stringify(trips));
+    saveTrip(tripInfo);
     setShowPopup(false);
     navigate('/success');
   };
@@ -101,38 +100,8 @@ const Home: React.FC = () => {
     setShowPopup(true);
   };
 
-  return (
-    <Body>
-      <div className="container">
-        <MultiSelect
-          items={destinationOptions}
-          placeHolder={Strings.Home.PlaceHolders.Detination}
-          selectedItems={selectedPlaces}
-          onChangeHandler={handleMultiSelectChange(setSelectedPlaces)}
-        />
-        <MultiSelect
-          items={interestOptions}
-          placeHolder={Strings.Home.PlaceHolders.Interests}
-          selectedItems={selectedInterests}
-          onChangeHandler={handleMultiSelectChange(setSelectedInterests)}
-        />
-        <Dropdown
-          items={travelSizeOptions}
-          placeHolder={Strings.Home.PlaceHolders.Travelers}
-          onChangeHandler={(e: any) => setTravellersCount(e.target.value)}
-        />
-        <Dropdown
-          items={budgetOptions}
-          placeHolder={Strings.Home.PlaceHolders.Budget}
-          onChangeHandler={(e: any) => setBudget(e.target.value)}
-        />
-      </div>
-      <div style={{ margin: '10px' }}>
-        <Button variant="contained" onClick={openPopup}>
-          {Strings.Home.CreateMyTripButton}
-        </Button>
-      </div>
-
+  const renderModal = () => {
+    return (
       <Modal
         open={showPopup}
         onClose={() => setShowPopup(false)}
@@ -224,6 +193,42 @@ const Home: React.FC = () => {
           </CenteredContainer>
         </Box>
       </Modal>
+    );
+  };
+
+  return (
+    <Body>
+      <div className="container">
+        <MultiSelect
+          items={destinationOptions}
+          placeHolder={Strings.Home.PlaceHolders.Detination}
+          selectedItems={selectedPlaces}
+          onChangeHandler={handleMultiSelectChange(setSelectedPlaces)}
+        />
+        <MultiSelect
+          items={interestOptions}
+          placeHolder={Strings.Home.PlaceHolders.Interests}
+          selectedItems={selectedInterests}
+          onChangeHandler={handleMultiSelectChange(setSelectedInterests)}
+        />
+        <Dropdown
+          items={travelSizeOptions}
+          placeHolder={Strings.Home.PlaceHolders.Travelers}
+          onChangeHandler={(e: any) => setTravellersCount(e.target.value)}
+        />
+        <Dropdown
+          items={budgetOptions}
+          placeHolder={Strings.Home.PlaceHolders.Budget}
+          onChangeHandler={(e: any) => setBudget(e.target.value)}
+        />
+      </div>
+      <div style={{ margin: '10px' }}>
+        <Button variant="contained" onClick={openPopup}>
+          {Strings.Home.CreateMyTripButton}
+        </Button>
+      </div>
+
+      {renderModal()}
     </Body>
   );
 };

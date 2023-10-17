@@ -19,6 +19,22 @@ export const Strings = {
       SubmitButton: 'Submit',
     },
   },
+  TripDetailPage: {
+    Name: 'Name: ',
+    Email: 'Email: ',
+    Mobile: 'Mobile: ',
+    Destinations: 'Destinations: ',
+    Interests: 'Interests: ',
+    Duration: 'Duration: ',
+    TravlerCount: 'No. of travelers: ',
+    Stage: 'Trip Stage:  ',
+    Budget: 'Budget: ',
+    Days: 'days',
+  },
+  Login: {
+    Username: 'Username',
+    Password: 'Password',
+  },
   PageNotFoundPage: {
     Dialog: {
       Title: 'Looks like we’re lost.',
