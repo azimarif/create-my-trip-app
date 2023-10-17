@@ -21,6 +21,7 @@ import {
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
 import { Strings } from '../../locales/English';
+import { EMAIL_REGEX, MOBILE_REGEX } from '../../utils/util';
 
 const style = {
   position: 'absolute',
@@ -55,11 +56,23 @@ const Home: React.FC = () => {
       setter(selectedValues);
     };
 
-  const handleClick = () => {
+  const validate = () => {
     const invalidInputs = [fullName, mobileNumber, email].some(
       (x) => x.length === 0,
     );
     if (invalidInputs) {
+      return false;
+    }
+    const isValidMobile = MOBILE_REGEX.test(mobileNumber);
+    const isValidEmail = EMAIL_REGEX.test(email);
+    if (!isValidMobile || !isValidEmail) {
+      return false;
+    }
+    return true;
+  };
+  const handleClick = () => {
+    const valid = validate();
+    if (!valid) {
       alert('Please enter mandatory fields!');
       return;
     }
@@ -116,7 +129,7 @@ const Home: React.FC = () => {
       </div>
       <div style={{ margin: '10px' }}>
         <Button variant="contained" onClick={openPopup}>
-        {Strings.Home.CreateMyTripButton}
+          {Strings.Home.CreateMyTripButton}
         </Button>
       </div>
 
@@ -129,12 +142,12 @@ const Home: React.FC = () => {
         <Box sx={style}>
           <CenteredContainer className="row">
             <Typography variant="h6" component="h2">
-            {Strings.Home.Modal.Title}
+              {Strings.Home.Modal.Title}
             </Typography>
           </CenteredContainer>
           <CenteredContainer>
             <Typography sx={{ mt: 2 }}>
-            {Strings.Home.Modal.Description1}
+              {Strings.Home.Modal.Description1}
             </Typography>
           </CenteredContainer>
           <CenteredContainer>
@@ -197,7 +210,7 @@ const Home: React.FC = () => {
             <MarginedContainer>
               <Dropdown
                 items={stagesOptions}
-                  placeHolder={Strings.Home.Modal.Stage}
+                placeHolder={Strings.Home.Modal.Stage}
                 onChangeHandler={(e: any) => setTripStage(e.target.value)}
               />
             </MarginedContainer>

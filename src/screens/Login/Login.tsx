@@ -115,7 +115,7 @@ function Login() {
                   </CardTitleContainer>
                   <JourneyContainer>
                     <Typography variant="h5">
-                      Destinations: {trip.places}
+                      Destinations: {trip.places.join(', ')}
                     </Typography>
                     <JourneyDivider> {trip.tripDate}</JourneyDivider>
                     <Typography variant="h5">

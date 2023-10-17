@@ -4,7 +4,7 @@ export const Strings = {
       Detination: 'Where do you want to go?',
       Interests: 'Your Interests?',
       Travelers: 'No. of travelers',
-      Budget: 'Budget Per Person'
+      Budget: 'Budget Per Person',
     },
     CreateMyTripButton: 'Create My Trip Now',
     Modal: {
@@ -16,8 +16,8 @@ export const Strings = {
       Trip: 'Trip Duration (Days)',
       When: 'When',
       Stage: 'What stage of planning are you in?',
-      SubmitButton: 'Submit'
-    }
+      SubmitButton: 'Submit',
+    },
   },
   PageNotFoundPage: {
     Dialog: {
