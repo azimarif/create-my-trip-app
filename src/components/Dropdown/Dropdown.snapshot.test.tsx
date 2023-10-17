@@ -11,7 +11,7 @@ test('Dropdown component matches snapshot', () => {
       items={items}
       defaultValue={defaultValue}
       onChangeHandler={jest.fn()}
-    />
+    />,
   );
 
   expect(container).toMatchSnapshot();

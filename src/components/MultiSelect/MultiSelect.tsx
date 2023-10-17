@@ -11,7 +11,7 @@ interface MultiSelectProps {
   items: string[];
   placeHolder: string;
   selectedItems: string[];
-  onChangeHandler: any
+  onChangeHandler: any;
 }
 
 const MultiSelect: React.FC<MultiSelectProps> = ({

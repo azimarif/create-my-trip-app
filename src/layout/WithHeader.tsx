@@ -1,6 +1,6 @@
-import Header from "./Header";
-import { styled } from "@mui/material";
-import { ReactNode } from "react";
+import Header from './Header';
+import { styled } from '@mui/material';
+import { ReactNode } from 'react';
 
 const WithHeader = (element: ReactNode) => {
   return (
@@ -11,10 +11,10 @@ const WithHeader = (element: ReactNode) => {
   );
 };
 
-const PageContainer = styled("div")({
-  display: "flex",
-  flexDirection: "column",
-  minHeight: "100vh",
+const PageContainer = styled('div')({
+  display: 'flex',
+  flexDirection: 'column',
+  minHeight: '100vh',
 });
 
 export default WithHeader;

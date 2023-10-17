@@ -1,6 +1,6 @@
-import { AppBar, Button, Toolbar, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
+import { AppBar, Button, Toolbar, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -20,12 +20,12 @@ const Header = () => {
   return (
     <AppBar position="static">
       <Toolbar sx={headerStyles}>
-        <Link to={"/"}>
+        <Link to={'/'}>
           <Typography variant="h6" component="div" sx={titleStyles}>
             Enchanting Travels
           </Typography>
         </Link>
-        <Button variant="contained" onClick={() => navigate("/login")}>
+        <Button variant="contained" onClick={() => navigate('/login')}>
           Login
         </Button>
       </Toolbar>

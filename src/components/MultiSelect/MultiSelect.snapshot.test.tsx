@@ -12,7 +12,7 @@ test('MultiSelect component snapshot', () => {
       placeHolder={placeHolder}
       selectedItems={selectedItems}
       onChangeHandler={() => {}}
-    />
+    />,
   );
 
   expect(container).toMatchSnapshot();
