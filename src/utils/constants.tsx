@@ -47,3 +47,14 @@ export const stagesOptions: string[] = [
   'Definitely traveling, need destination expertise',
   'I want to book a trip',
 ];
+
+interface User {
+  username: string;
+  password: string;
+}
+
+//Admin config
+export const adminConfig: User = {
+  username: 'admin',
+  password: 'admin'
+}

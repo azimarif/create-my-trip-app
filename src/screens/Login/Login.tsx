@@ -11,6 +11,7 @@ import {
 } from '@mui/material';
 import Body from '../../layout/Body';
 import { Trip } from '../../Trip';
+import { adminConfig } from '../../utils/constants';
 
 const CardContainer = styled(Container)({
   maxWidth: '100em',
@@ -52,8 +53,12 @@ function Login() {
   };
 
   const loginHandler = () => {
-    setShowTrips(true);
-    loadTrips();
+    if (username === adminConfig.username && password === adminConfig.password) {
+      setShowTrips(true);
+      loadTrips();
+      return;
+    }
+    alert('Invalid username & password')
   };
 
   useEffect(() => {
@@ -89,7 +94,6 @@ function Login() {
         </>
       ) : (
         <>
-          <TextField placeholder="Search by name or emailId" />
           <Typography variant="h5" mb={2}>
             Booked Trips
           </Typography>
@@ -98,23 +102,23 @@ function Login() {
               <Card>
                 <StyledCardContent>
                   <CardTitleContainer>
-                    <Typography variant="h6">{trip.fullName}</Typography>
-                    <Typography>{trip.email}</Typography>
-                    <Typography>{trip.mobileNumber.toString()}</Typography>
+                    <Typography variant="h6">Name: {trip.fullName}</Typography>
+                    <Typography>Email: {trip.email}</Typography>
+                    <Typography>Mobile: {trip.mobileNumber.toString()}</Typography>
                   </CardTitleContainer>
                   <JourneyContainer>
-                    <Typography variant="h5">{trip.places}</Typography>
-                    <JourneyDivider>{trip.tripDate}</JourneyDivider>
-                    <Typography variant="h5">{trip.interests}</Typography>
+                    <Typography variant="h5">Destinations: {trip.places}</Typography>
+                    <JourneyDivider> {trip.tripDate}</JourneyDivider>
+                    <Typography variant="h5">Interests: {trip.interests}</Typography>
                   </JourneyContainer>
-                  <Container>
-                    <Typography>{trip.tripDuration.toString()}</Typography>
-                    <Typography>{trip.tripStage}</Typography>
-                  </Container>
-                  <Container>
-                    <Typography>{trip.travellersCount.toString()}</Typography>
-                    <Typography>{trip.budget}</Typography>
-                  </Container>
+                  <JourneyContainer>
+                    <Typography>Duration: {trip.tripDuration.toString()} days</Typography>
+                    <Typography>Stage: {trip.tripStage}</Typography>
+                  </JourneyContainer>
+                  <JourneyContainer>
+                    <Typography>No. of travellers: {trip.travellersCount.toString()}</Typography>
+                    <Typography>Budget: {trip.budget}</Typography>
+                    </JourneyContainer>
                 </StyledCardContent>
               </Card>
             </CardContainer>
