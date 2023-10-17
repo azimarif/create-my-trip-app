@@ -99,7 +99,7 @@ const Home: React.FC = () => {
                     onChangeHandler={(e: any) => setBudget(e.target.value)}
                 />
             </div>
-            <div>
+            <div style={{margin: '10px'}}>
                 <Button variant="contained" onClick={openPopup}>
                     Create My Trip Now
                 </Button>
@@ -126,10 +126,10 @@ const Home: React.FC = () => {
                     </MarginedContainer>
                     <MarginedContainer>
                         <TextField fullWidth placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                        </MarginedContainer>
+                    </MarginedContainer>
                     <MarginedContainer>
                         <TextField fullWidth placeholder="Phone Number" value={mobileNumber} onChange={(e) => setMobileNumber(e.target.value)} />
-                        </MarginedContainer>
+                    </MarginedContainer>
                     <Container style={{ marginTop: '10px', display: 'flex', justifyContent: 'space-between' }}>
                         <TextField placeholder="Trip Duration (Days)" value={tripDuration} onChange={(e) => setTripDuration(e.target.value)} />
                         <Dropdown
@@ -149,7 +149,7 @@ const Home: React.FC = () => {
                         <Button variant="contained" onClick={handleClick}>
                             Submit
                         </Button>
-                        </MarginedContainer>
+                    </MarginedContainer>
                 </Box>
             </Modal>
         </Body>

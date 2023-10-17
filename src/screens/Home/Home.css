@@ -14,3 +14,8 @@
 .modal-row {
     margin-top: 10px;
 }
+
+.create-my-trip-btn {
+    margin: 10px;
+    background-color: yellowgreen;
+}
