@@ -81,7 +81,7 @@ function Login() {
         <>
           <TextField placeholder="Search by name or emailId" />
           <Typography variant="h5" mb={2}>
-            Bookings
+            Booked Trips
           </Typography>
           {trips.map((trip, index) => (
             <CardContainer key={index}>
