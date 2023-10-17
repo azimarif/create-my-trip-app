@@ -15,6 +15,6 @@ test('Home component matches snapshot with modal closed', () => {
 test('Home component matches snapshot with modal open', () => {
   const { container, getByText } = render(<Home />);
   const createTripButton = getByText('Create My Trip Now');
-  fireEvent.click(createTripButton); // Simulate clicking the button to open the modal
+  fireEvent.click(createTripButton);
   expect(container).toMatchSnapshot();
 });

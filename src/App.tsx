@@ -1,13 +1,11 @@
 import './App.css';
 import { Routes, Route } from 'react-router-dom';
 
-// Fonts for Material UI components
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import theme from './style/theme';
-// @ts-ignore
 import { ThemeProvider } from '@mui/material/styles';
 import WithHeader from './layout/WithHeader';
 import PageNotFound from './screens/PageNotFound/PageNotFound';

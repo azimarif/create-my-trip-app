@@ -53,12 +53,15 @@ function Login() {
   };
 
   const loginHandler = () => {
-    if (username === adminConfig.username && password === adminConfig.password) {
+    if (
+      username === adminConfig.username &&
+      password === adminConfig.password
+    ) {
       setShowTrips(true);
       loadTrips();
       return;
     }
-    alert('Invalid username & password')
+    alert('Invalid username & password');
   };
 
   useEffect(() => {
@@ -104,21 +107,31 @@ function Login() {
                   <CardTitleContainer>
                     <Typography variant="h6">Name: {trip.fullName}</Typography>
                     <Typography>Email: {trip.email}</Typography>
-                    <Typography>Mobile: {trip.mobileNumber.toString()}</Typography>
+                    <Typography>
+                      Mobile: {trip.mobileNumber.toString()}
+                    </Typography>
                   </CardTitleContainer>
                   <JourneyContainer>
-                    <Typography variant="h5">Destinations: {trip.places}</Typography>
+                    <Typography variant="h5">
+                      Destinations: {trip.places}
+                    </Typography>
                     <JourneyDivider> {trip.tripDate}</JourneyDivider>
-                    <Typography variant="h5">Interests: {trip.interests}</Typography>
+                    <Typography variant="h5">
+                      Interests: {trip.interests}
+                    </Typography>
                   </JourneyContainer>
                   <JourneyContainer>
-                    <Typography>Duration: {trip.tripDuration.toString()} days</Typography>
+                    <Typography>
+                      Duration: {trip.tripDuration.toString()} days
+                    </Typography>
                     <Typography>Stage: {trip.tripStage}</Typography>
                   </JourneyContainer>
                   <JourneyContainer>
-                    <Typography>No. of travellers: {trip.travellersCount.toString()}</Typography>
+                    <Typography>
+                      No. of travellers: {trip.travellersCount.toString()}
+                    </Typography>
                     <Typography>Budget: {trip.budget}</Typography>
-                    </JourneyContainer>
+                  </JourneyContainer>
                 </StyledCardContent>
               </Card>
             </CardContainer>

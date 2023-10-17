@@ -56,5 +56,5 @@ interface User {
 //Admin config
 export const adminConfig: User = {
   username: 'admin',
-  password: 'admin'
-}
+  password: 'admin',
+};

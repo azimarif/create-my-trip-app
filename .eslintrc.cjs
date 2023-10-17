@@ -8,6 +8,7 @@ module.exports = {
     "coverage",
     "node_modules",
     "src/**/*.d.ts",
+    "*.snapshot.test.tsx"
   ],
   parser: "@typescript-eslint/parser",
   plugins: ["react-refresh"],
