@@ -10,7 +10,6 @@ import theme from "./style/theme";
 // @ts-ignore
 import { ThemeProvider } from "@mui/material/styles";
 import WithHeader from "./layout/WithHeader";
-import PageNotFound from "./screens/PageNotFound/PageNotFound";
 import Home from "./screens/Home/Home";
 import Login from "./screens/Login/Login";
 import TripCreatedPage from "./screens/TripCreatedPage/TripCreatedPage";
@@ -21,6 +20,7 @@ function App() {
       <Routes>
         <Route path="/" element={WithHeader(<Home />)} />
         <Route path="/login" element={WithHeader(<Login />)} />
+        <Route path="/success" element={WithHeader(<TripCreatedPage />)} />
       </Routes>
     </ThemeProvider>
   );
