@@ -77,6 +77,7 @@ function Login() {
           <div style={{ margin: '10px' }}>
             <TextField
               placeholder="Username"
+              fullWidth
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -84,6 +85,7 @@ function Login() {
           <div style={{ margin: '10px' }}>
             <TextField
               type="password"
+              fullWidth
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}

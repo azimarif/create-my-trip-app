@@ -1,4 +1,24 @@
 export const Strings = {
+  Home: {
+    PlaceHolders: {
+      Detination: 'Where do you want to go?',
+      Interests: 'Your Interests?',
+      Travelers: 'No. of travelers',
+      Budget: 'Budget Per Person'
+    },
+    CreateMyTripButton: 'Create My Trip Now',
+    Modal: {
+      Title: 'Almost There!',
+      Description1: 'We need a bit more info to create your itinerary:',
+      Name: 'Full Name',
+      Email: 'Email',
+      Mobile: 'Mobile Number',
+      Trip: 'Trip Duration (Days)',
+      When: 'When',
+      Stage: 'What stage of planning are you in?',
+      SubmitButton: 'Submit'
+    }
+  },
   PageNotFoundPage: {
     Dialog: {
       Title: 'Looks like we’re lost.',

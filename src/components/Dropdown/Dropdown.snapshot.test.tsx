@@ -1,4 +1,3 @@
-import React from 'react';
 import { render } from '@testing-library/react';
 import Dropdown from './Dropdown';
 
@@ -9,7 +8,7 @@ test('Dropdown component matches snapshot', () => {
   const { container } = render(
     <Dropdown
       items={items}
-      defaultValue={defaultValue}
+      placeHolder={defaultValue}
       onChangeHandler={jest.fn()}
     />,
   );

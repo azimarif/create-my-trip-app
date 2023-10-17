@@ -20,6 +20,7 @@ import {
 } from '../../utils/constants';
 import { useNavigate } from 'react-router-dom';
 import styled from '@emotion/styled';
+import { Strings } from '../../locales/English';
 
 const style = {
   position: 'absolute',
@@ -92,30 +93,30 @@ const Home: React.FC = () => {
       <div className="container">
         <MultiSelect
           items={destinationOptions}
-          placeHolder="Where do you want to go?"
+          placeHolder={Strings.Home.PlaceHolders.Detination}
           selectedItems={selectedPlaces}
           onChangeHandler={handleMultiSelectChange(setSelectedPlaces)}
         />
         <MultiSelect
           items={interestOptions}
-          placeHolder="Your Interests?"
+          placeHolder={Strings.Home.PlaceHolders.Interests}
           selectedItems={selectedInterests}
           onChangeHandler={handleMultiSelectChange(setSelectedInterests)}
         />
         <Dropdown
           items={travelSizeOptions}
-          defaultValue="No. of travelers"
+          placeHolder={Strings.Home.PlaceHolders.Travelers}
           onChangeHandler={(e: any) => setTravellersCount(e.target.value)}
         />
         <Dropdown
           items={budgetOptions}
-          defaultValue="Budget Per Person"
+          placeHolder={Strings.Home.PlaceHolders.Budget}
           onChangeHandler={(e: any) => setBudget(e.target.value)}
         />
       </div>
       <div style={{ margin: '10px' }}>
         <Button variant="contained" onClick={openPopup}>
-          Create My Trip Now
+        {Strings.Home.CreateMyTripButton}
         </Button>
       </div>
 
@@ -128,12 +129,12 @@ const Home: React.FC = () => {
         <Box sx={style}>
           <CenteredContainer className="row">
             <Typography variant="h6" component="h2">
-              Almost There!
+            {Strings.Home.Modal.Title}
             </Typography>
           </CenteredContainer>
           <CenteredContainer>
             <Typography sx={{ mt: 2 }}>
-              We need a bit more info to create your itinerary:
+            {Strings.Home.Modal.Description1}
             </Typography>
           </CenteredContainer>
           <CenteredContainer>
@@ -141,7 +142,7 @@ const Home: React.FC = () => {
               <TextField
                 required
                 id="outlined-required"
-                label="Full Name"
+                label={Strings.Home.Modal.Name}
                 fullWidth
                 value={fullName}
                 onChange={(e) => setFullName(e.target.value)}
@@ -154,7 +155,7 @@ const Home: React.FC = () => {
                 fullWidth
                 required
                 id="outlined-required"
-                label="Email"
+                label={Strings.Home.Modal.Email}
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
@@ -166,7 +167,7 @@ const Home: React.FC = () => {
                 fullWidth
                 id="outlined-required"
                 required
-                label="Mobile Number"
+                label={Strings.Home.Modal.Mobile}
                 value={mobileNumber}
                 onChange={(e) => setMobileNumber(e.target.value)}
               />
@@ -181,13 +182,13 @@ const Home: React.FC = () => {
               }}
             >
               <TextField
-                placeholder="Trip Duration (Days)"
+                placeholder={Strings.Home.Modal.Trip}
                 value={tripDuration}
                 onChange={(e) => setTripDuration(e.target.value)}
               />
               <Dropdown
                 items={whenOptions}
-                defaultValue="When"
+                placeHolder={Strings.Home.Modal.When}
                 onChangeHandler={(e: any) => setTripDate(e.target.value)}
               />
             </Container>
@@ -196,7 +197,7 @@ const Home: React.FC = () => {
             <MarginedContainer>
               <Dropdown
                 items={stagesOptions}
-                defaultValue="What stage of planning are you in?"
+                  placeHolder={Strings.Home.Modal.Stage}
                 onChangeHandler={(e: any) => setTripStage(e.target.value)}
               />
             </MarginedContainer>
@@ -204,7 +205,7 @@ const Home: React.FC = () => {
           <CenteredContainer>
             <MarginedContainer>
               <Button variant="contained" onClick={handleClick}>
-                Submit
+                {Strings.Home.Modal.SubmitButton}
               </Button>
             </MarginedContainer>
           </CenteredContainer>

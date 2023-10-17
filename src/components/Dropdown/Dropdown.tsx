@@ -9,21 +9,21 @@ import {
 
 interface DropdownProps {
   items: string[];
-  defaultValue: string;
+  placeHolder: string;
   onChangeHandler: any;
 }
 
 const Dropdown: React.FC<DropdownProps> = ({
   items,
-  defaultValue,
+  placeHolder,
   onChangeHandler,
 }) => {
   return (
     <FormControl sx={{ m: 0, width: 300 }}>
-      <InputLabel>{defaultValue}</InputLabel>
+      <InputLabel>{placeHolder}</InputLabel>
       <Select
         onChange={onChangeHandler}
-        input={<OutlinedInput label={defaultValue} />}
+        input={<OutlinedInput label={placeHolder} />}
       >
         {items.map((item: string) => (
           <MenuItem key={item} value={item}>
